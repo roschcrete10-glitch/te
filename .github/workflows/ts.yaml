@@ -9,7 +9,10 @@ jobs:
     steps:
     - name: Get Repo code
       uses: actions/checkout@v3
-      
+
     - name: Check file
-      run: test -f test.py
+      run: |
+       test -f test.py
+       test -f t.py
+
 
