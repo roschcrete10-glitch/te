@@ -28,8 +28,8 @@ jobs:
 
     - name: Print Success Message
       run: |
-      echo "Success"
-      echo "Success"
+        echo "Success"
+        echo "Success"
 
        
 
