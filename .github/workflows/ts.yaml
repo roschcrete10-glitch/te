@@ -31,9 +31,16 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     # 5. Compile your Docker Blueprint using your dynamic Docker Hub username
+        # 5. Compile your Docker blueprint with BOTH a unique run number AND the latest tag
+    # github.run_number is an automatic variable (e.g., #10, #11, #12)
     - name: Build Docker Image
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/my-python-app:latest .
+      run: |
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/my-python-app:${{ github.run_number }} \
+                     -t ${{ secrets.DOCKER_USERNAME }}/my-python-app:latest .
 
-    # 6. Ship the final frozen image to your cloud Docker Hub account library
+    # 6. Ship both tags up to your cloud dashboard library
     - name: Push Image to Docker Hub
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/my-python-app:latest
+      run: |
+        docker push ${{ secrets.DOCKER_USERNAME }}/my-python-app:${{ github.run_number }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/my-python-app:latest
+
