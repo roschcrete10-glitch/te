@@ -26,8 +26,10 @@ jobs:
 
     steps:
 
-    - name: Print
-      run: console.log("Success")
+  - name: Print Success Message
+    run: |
+      echo "Success"
+      echo "Success"
 
        
 
