@@ -26,8 +26,8 @@ jobs:
 
     steps:
 
-  - name: Print Success Message
-    run: |
+    - name: Print Success Message
+      run: |
       echo "Success"
       echo "Success"
 
